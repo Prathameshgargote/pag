@@ -1,0 +1,92 @@
+<mat-card class="w-100 h-100">
+  <mat-card-content>
+    <h2>{{IsEditMode?"Update Employee":" Add Employee"}}</h2>
+    <form [formGroup]="empForm" (ngSubmit)="onSubmit()">
+      <div class="row">
+        <div class="col-md-6">
+          <mat-form-field appearance="outline" class="w-100">
+            <mat-label>First Name</mat-label>
+            <input type="text" matInput formControlName="fname" />
+          </mat-form-field>
+        </div>
+        <div class="col-md-6">
+          <mat-form-field appearance="outline" class="w-100">
+            <mat-label>last Name</mat-label>
+            <input type="text" matInput formControlName="lname" />
+          </mat-form-field>
+        </div>
+
+        <div class="col-md-6">
+          <mat-form-field appearance="outline" class="w-100">
+            <mat-label>Choose a date</mat-label>
+            <input matInput [matDatepicker]="picker" formControlName="DOB" />
+            <mat-hint>MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle
+              matSuffix
+              [for]="picker"
+            ></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+          <!-- <mat-form-field class="example-full-width w-100" appearance="outline">
+            <mat-label>birth date</mat-label>
+            <input matInput elementTiming="date"  formControlName="DOB"   [matDatepicker]="picker" />
+            <mat-hint>MM/DD/YYYY</mat-hint>
+             <mat-datepicker-toggle matSuffix [for]="picker">
+              <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
+            </mat-datepicker-toggle>
+            <mat-datepicker  #picker></mat-datepicker> 
+          </mat-form-field> -->
+        </div>
+        <div class="col-md-6">
+          <mat-form-field appearance="outline" class="w-100">
+            <mat-label>Experience</mat-label>
+            <input type="text" matInput formControlName="experience" />
+          </mat-form-field>
+        </div>
+
+        <div class="col-md-12">
+          <mat-form-field appearance="outline" class="w-100">
+            <mat-label>Email</mat-label>
+            <input type="text" matInput formControlName="email" />
+          </mat-form-field>
+        </div>
+        <div class="col-md-6">
+          <mat-radio-group formControlName="gender">
+            <h3>Gender</h3>
+            <mat-radio-button
+              *ngFor="let gender of ['Male', 'Female', 'Other']"
+              [value]="gender"
+              >{{ gender }}</mat-radio-button
+            >
+          </mat-radio-group>
+        </div>
+
+        <div class="col-md-6">
+          <mat-form-field appearance="outline" class="w-100">
+            <mat-label>contact</mat-label>
+            <input type="number" matInput formControlName="contact" />
+          </mat-form-field>
+        </div>
+        <div class="col-md-6">
+          <mat-form-field appearance="outline" class="w-100">
+            <mat-label>Education</mat-label>
+            <mat-select formControlName="education">
+              <mat-option
+                *ngFor="let Edu of ['Diploma', 'Gradution', 'Post-Gradution']"
+                [value]="Edu"
+                >{{ Edu }}</mat-option
+              >
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="col-md-6">
+          <mat-form-field appearance="outline" class="w-100">
+            <mat-label>Company</mat-label>
+            <input type="text" formControlName="company" matInput />
+          </mat-form-field>
+        </div>
+        <button mat-raised-button color="primary" class="w-100">{{IsEditMode?"Update Emp":"Add Emp"}}</button>
+      </div>
+    </form>
+  </mat-card-content>
+</mat-card>
